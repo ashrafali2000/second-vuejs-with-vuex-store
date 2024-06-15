@@ -1,7 +1,7 @@
 <template>
   <Popover class="relative">
     <PopoverButton
-      class="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
+      class="inline-flex text-white items-center gap-x-1 text-sm font-semibold leading-6 focus:bg-green-500 rounded-full px-4 py-1"
     >
       <span>Solutions</span>
       <ChevronDownIcon class="h-5 w-5" aria-hidden="true" />
@@ -19,20 +19,20 @@
         class="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4"
       >
         <div
-          class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5"
+          class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% text-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 border"
         >
           <div class="p-4">
             <div
               v-for="item in solutions"
               :key="item.name"
-              class="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
+              class="group relative flex gap-x-6 rounded-lg p-4 bg-gradient-to-t hover:from-pink-500 hover:to-yellow-500"
             >
               <div
-                class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white"
+                class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-black"
               >
                 <component
                   :is="item.icon"
-                  class="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+                  class="h-6 w-6 text-gray-600 group-hover:text-white"
                   aria-hidden="true"
                 />
               </div>

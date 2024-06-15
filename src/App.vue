@@ -1,5 +1,10 @@
-<script setup></script>
+<script setup>
+import NavBar from "./components/NavBar.vue";
+</script>
 
 <template>
-  <router-view></router-view>
+  <div class="bg-purple-200 pb-20">
+    <NavBar />
+    <router-view></router-view>
+  </div>
 </template>
