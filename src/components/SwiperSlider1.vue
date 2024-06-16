@@ -6,15 +6,12 @@
     }"
     :speed="600"
     :parallax="true"
+    :navigation="true"
+    :modules="modules"
     :autoplay="{
       delay: 2500,
       disableOnInteraction: false,
     }"
-    :pagination="{
-      clickable: true,
-    }"
-    :navigation="true"
-    :modules="modules"
     class="mySwiper"
   >
     <div
@@ -27,75 +24,166 @@
       data-swiper-parallax="-23%"
     ></div>
 
-    <swiper-slide>
-      <div class="flex">
-        <div>
-          <div class="title" data-swiper-parallax="-300">Slide 2</div>
-          <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+    <swiper-slide class="px-3 py-8 md:py-10 md:px-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 text-white">
+        <div class="order-2 md:order-1">
+          <div class="mt-3 text-xl md:text-4xl">Mobile Phone</div>
+          <div class="pt-2 md:pt-6 text-lg md:text-2xl">mens and womens</div>
 
-          <div class="text" data-swiper-parallax="-100">
+          <div class="text-sm md:text-base">
             <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+              dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla,
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
               dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
             </p>
-            <button
-              class="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% text-white font-bold border border-white rounded-full p-3"
-            >
-              Buy Now
-            </button>
-          </div>
-        </div>
-        <div class="">
-          <img :src="'heroSliderimg2.jpg'" class="h-96 w-[700px]" />
-        </div>
-      </div>
-    </swiper-slide>
-    <swiper-slide>
-      <div class="flex">
-        <div>
-          <div class="title" data-swiper-parallax="-300">Slide 2</div>
-          <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
 
-          <div class="text" data-swiper-parallax="-100">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-            </p>
-            <button
-              class="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% text-white font-bold border border-white rounded-full p-3"
+            <div
+              class="mt-4 lg:mt-8 bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% text-white font-bold border border-white rounded-full md:px-6 relative w-40 md:w-56 inline-flex items-center justify-center p-2 md:py-3 overflow-hidden transition duration-300 ease-out shadow-md group"
             >
-              Buy Now
-            </button>
+              <span
+                class="absolute cursor-pointer inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 group-hover:translate-x-0 ease rounded-full"
+              >
+                <span class="font-bold text-sm md:text-xl pr-3">Start</span>
+                <svg
+                  class="w-4 h-4 md:w-6 md:h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  ></path>
+                </svg>
+              </span>
+              <div className="flex justify-center items-center">
+                <span
+                  class="absolute text-sm md:text-xl flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease"
+                >
+                  Buy Now
+                </span>
+                <span class="relative invisible"> Buy Now </span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="">
+        <div class="order-1 md:order-2">
           <img
-            :src="'https://m.media-amazon.com/images/I/711IEZNcPaL.jpg'"
-            class="h-96 w-[500px]"
+            :src="'https://imageio.forbes.com/specials-images/imageserve/61055552b6d96ce71cdff7be/Apple-iPhone-13--iPhone-13-Pro--iPhone-13-Pro-Max--iPhone-13-Mini--new-iPhone/0x0.jpg?crop=831,468,x0,y0,safe&height=400&width=711&fit=bounds'"
+            class="h-44 md:h-64 lg:h-96 w-full"
           />
         </div>
       </div>
     </swiper-slide>
-    <swiper-slide>
-      <div class="flex">
-        <div>
-          <div class="title" data-swiper-parallax="-300">Slide 3</div>
-          <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+    <swiper-slide class="px-3 py-8 md:py-10 md:px-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 text-white">
+        <div class="order-2 md:order-1">
+          <div class="mt-3 text-xl md:text-4xl">Hand Watches</div>
+          <div class="pt-2 md:pt-6 text-lg md:text-2xl">mens and womens</div>
 
-          <div class="text" data-swiper-parallax="-100">
+          <div class="text-sm md:text-base">
             <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+              dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla,
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
               dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
             </p>
-            <button
-              class="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% text-white font-bold border border-white rounded-full p-3"
+            <div
+              class="mt-4 lg:mt-8 bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% text-white font-bold border border-white rounded-full md:px-6 relative w-40 md:w-56 inline-flex items-center justify-center p-2 md:py-3 overflow-hidden transition duration-300 ease-out shadow-md group"
             >
-              Buy Now
-            </button>
+              <span
+                class="absolute cursor-pointer inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 group-hover:translate-x-0 ease"
+              >
+                <span class="font-bold text-sm md:text-xl pr-3">Start</span>
+                <svg
+                  class="w-4 h-4 md:w-6 md:h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  ></path>
+                </svg>
+              </span>
+              <div className="flex justify-center items-center">
+                <span
+                  class="absolute text-sm md:text-xl flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease"
+                >
+                  Buy Now
+                </span>
+                <span class="relative invisible"> Buy Now </span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="">
-          <img :src="'heroSliderimg1.jpg'" class="h-96 w-[700px]" />
+        <div class="order-1 md:order-2">
+          <img
+            :src="'https://static.toiimg.com/thumb/msid-98015126,width-1280,height-720,resizemode-4/98015126.jpg'"
+            class="h-44 md:h-64 lg:h-96 w-full"
+          />
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="px-3 py-8 md:py-10 md:px-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 text-white">
+        <div class="order-2 md:order-1">
+          <div class="mt-3 text-xl md:text-4xl">Shoes</div>
+          <div class="pt-2 md:pt-6 text-lg md:text-2xl">mens and womens</div>
+
+          <div class="text-sm md:text-base">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+              dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla,
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+              dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
+            </p>
+            <div
+              class="mt-4 lg:mt-8 bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% text-white font-bold border border-white rounded-full md:px-6 relative w-40 md:w-56 inline-flex items-center justify-center p-2 md:py-3 overflow-hidden transition duration-300 ease-out shadow-md group"
+            >
+              <span
+                class="absolute cursor-pointer inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 group-hover:translate-x-0 ease"
+              >
+                <span class="font-bold text-sm md:text-xl pr-3">Start</span>
+                <svg
+                  class="w-4 h-4 md:w-6 md:h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  ></path>
+                </svg>
+              </span>
+              <div className="flex justify-center items-center">
+                <span
+                  class="absolute text-sm md:text-xl flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease"
+                >
+                  Buy Now
+                </span>
+                <span class="relative invisible"> Buy Now </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 md:order-2">
+          <img
+            :src="'https://media.istockphoto.com/id/1350560575/photo/pair-of-blue-running-sneakers-on-white-background-isolated.jpg?s=612x612&w=0&k=20&c=A3w_a9q3Gz-tWkQL6K00xu7UHdN5LLZefzPDp-wNkSU='"
+            class="h-44 md:h-64 lg:h-96 w-full"
+          />
         </div>
       </div>
     </swiper-slide>
