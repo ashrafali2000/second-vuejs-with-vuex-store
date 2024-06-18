@@ -187,6 +187,7 @@
       :open="open"
       :cartCloseHandler="cartCloseHandler"
       :totalBalance="totalBalance"
+      :removeItemToCartHandler="removeItemToCartHandler"
     />
   </div>
 </template>
@@ -289,6 +290,11 @@ const addToCartHandler = (val) => {
     );
     buyCartProduct.push(addToCartProducts.value);
   }
+  open.value = true;
+  buyCartProduct.map((p) => (totalBalance.value += +p.price));
+};
+const removeItemToCartHandler = (val) => {
+  buyCartProduct = buyCartProduct.filter((product) => product.title !== val);
   open.value = true;
   buyCartProduct.map((p) => (totalBalance.value += +p.price));
 };

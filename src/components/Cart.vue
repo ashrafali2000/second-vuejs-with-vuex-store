@@ -93,6 +93,9 @@
                                 <div class="flex">
                                   <button
                                     type="button"
+                                    @click="
+                                      removeItemToCartHandler(product.title)
+                                    "
                                     class="font-medium text-indigo-600 hover:text-indigo-500"
                                   >
                                     Remove
@@ -164,6 +167,7 @@ defineProps({
   open: Boolean,
   cartCloseHandler: Function,
   totalBalance: Number,
+  removeItemToCartHandler: Function,
 });
 // console.log("buyCartProduct------------>", buyCartProduct);
 </script>
