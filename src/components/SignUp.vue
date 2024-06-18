@@ -3,37 +3,19 @@ import axios from "axios";
 import { ref } from "vue";
 
 defineProps({
-  signUpHandler1: Function,
   signInHandler1: Function,
+  signUpHandler1: Function,
 });
+let username = ref(null);
 let email = ref(null);
 let password = ref(null);
 const submitHandler = async () => {
-  let response = await axios.post("http://localhost:3000/api/auth/signin", {
+  let response = await axios.post("http://localhost:3000/api/auth/signup", {
+    username: username.value,
     email: email.value,
     password: password.value,
   });
   console.log("response------->", response);
-  localStorage.setItem("token", JSON.stringify(response.data.token));
-};
-import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
-import { app } from "../../src/firebase.js";
-const auth = getAuth(app);
-const handleGoogleClick = async () => {
-  const provider = new GoogleAuthProvider();
-  provider.setCustomParameters({ prompt: "select_account" });
-  try {
-    const resultFromGoogle = await signInWithPopup(auth, provider);
-    const res = await axios.post("http://localhost:3000/api/auth/google", {
-      name: resultFromGoogle.user.displayName,
-      email: resultFromGoogle.user.email,
-      googlePhotoURL: resultFromGoogle.user.photoURL,
-    });
-    const data = res.data;
-    console.log("data----------->", data);
-  } catch (error) {
-    console.log(error);
-  }
 };
 </script>
 <template>
@@ -49,12 +31,30 @@ const handleGoogleClick = async () => {
       <h2
         class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
       >
-        Sign in to your account
+        Create an account
       </h2>
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form @submit.prevent="submitHandler" class="space-y-6">
+        <div>
+          <label
+            for="username"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >User name</label
+          >
+          <div class="mt-2">
+            <input
+              id="username"
+              name="username"
+              type="text"
+              autocomplete="username"
+              required="true"
+              v-model="username"
+              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
         <div>
           <label
             for="email"
@@ -81,13 +81,6 @@ const handleGoogleClick = async () => {
               class="block text-sm font-medium leading-6 text-gray-900"
               >Password</label
             >
-            <div class="text-sm">
-              <a
-                href="#"
-                class="font-semibold text-indigo-600 hover:text-indigo-500"
-                >Forgot password?</a
-              >
-            </div>
           </div>
           <div class="mt-2">
             <input
@@ -107,11 +100,10 @@ const handleGoogleClick = async () => {
             type="submit"
             class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            Sign in
+            Sign up
           </button>
         </div>
         <button
-          @click="handleGoogleClick"
           class="group w-full relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200"
         >
           <span
@@ -136,12 +128,12 @@ const handleGoogleClick = async () => {
       </form>
 
       <p class="mt-10 text-center text-sm text-gray-500">
-        Not a member?
+        Already an account?
         {{ " " }}
         <span
-          @click="signUpHandler1"
+          @click="signInHandler1"
           class="cursor-pointer font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-          >Sign up</span
+          >Sign in</span
         >
       </p>
     </div>

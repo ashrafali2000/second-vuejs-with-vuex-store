@@ -38,7 +38,16 @@
           <DropDown />
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-          <router-link to="/sign-in" class="text-sm font-semibold leading-6"
+          <span
+            v-if="logOut"
+            class="cursor-pointer text-sm font-semibold leading-6"
+            @click="logOutHandler"
+            >Log out <span aria-hidden="true">&rarr;</span></span
+          >
+          <router-link
+            v-else
+            to="/sign-in"
+            class="text-sm font-semibold leading-6"
             >Log in <span aria-hidden="true">&rarr;</span></router-link
           >
         </div>
@@ -97,7 +106,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { Dialog, DialogPanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import DropDown from "./DropDown.vue";
@@ -108,6 +117,18 @@ const navigation = [
   { name: "Marketplace", href: "/marketplace" },
   { name: "Company", href: "/company" },
 ];
-
 const mobileMenuOpen = ref(false);
+const logOut = ref(false);
+let userToken = ref("");
+userToken.value = JSON.parse(localStorage.getItem("token"));
+watch(
+  () => userToken.value,
+  (newVal) => {
+    console.log("newVal ------>", newVal);
+    console.log("userToken.value------>", userToken.value);
+  }
+);
+const logOutHandler = () => {
+  localStorage.removeItem("token");
+};
 </script>

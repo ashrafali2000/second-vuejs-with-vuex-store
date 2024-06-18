@@ -12,7 +12,9 @@
       class="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% h-1 rounded-full w-full"
     ></span>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-5 md:pb-10"
+  >
     <div class="flex flex-col gap-5 justify-center items-center">
       <SwiperSliderLatestProduct1 />
       <div
