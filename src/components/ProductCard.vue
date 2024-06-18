@@ -91,10 +91,10 @@
             class="text-sm md:text-xl lg:text-3xl font-bold text-gray-900 dark:text-white"
             >${{ price }}</span
           >
-          <a
-            href="#"
-            class="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% hover:from-pink-500 hover:to-yellow-500 text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[10px] md:text-sm px-1 py-1 md:px-5 md:py-2.5 text-center"
-            >Add to cart</a
+          <span
+            @click="addToCartHandler(title)"
+            class="cursor-pointer bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% hover:from-pink-500 hover:to-yellow-500 text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[10px] md:text-sm px-1 py-1 md:px-5 md:py-2.5 text-center"
+            >Add to cart</span
           >
         </div>
       </div>
@@ -116,6 +116,7 @@ defineProps({
   image: String,
   price: Number,
   rating: Object,
+  addToCartHandler: Function,
 });
 import Modal from "./Modal.vue";
 import { ref } from "vue";

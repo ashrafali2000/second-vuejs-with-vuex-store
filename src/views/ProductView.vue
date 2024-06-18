@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pb-10">
     <div
       class="flex flex-wrap lg:flex-nowrap justify-around pb-4 gap-2 md:gap-4 lg:gap-0 mx-auto py-3 px-3 md:px-0"
     >
@@ -170,6 +170,7 @@
       >
         <div v-for="product in products">
           <ProductCard
+            :addToCartHandler="addToCartHandler"
             :category="product.category"
             :title="product.title"
             :description="product.description"
@@ -180,15 +181,24 @@
         </div>
       </div>
     </div>
+    <!-- cart -->
+    <Cart
+      :addToCartProducts="addToCartProducts"
+      :open="open"
+      :cartCloseHandler="cartCloseHandler"
+    />
   </div>
 </template>
 <script setup>
 import axios from "axios";
 import ProductCard from "../components/ProductCard.vue";
+import Cart from "../components/Cart.vue";
 import { onMounted, ref } from "vue";
 let products = ref([]);
+let addToCartProducts = ref([]);
 let loader = ref(true);
 let search = ref("");
+const open = ref(false);
 onMounted(async () => {
   let response = await axios.get("https://fakestoreapi.com/products");
   products.value = response.data;
@@ -266,5 +276,14 @@ const onElectronicHandler = async () => {
   );
   products.value = response.data;
   loader.value = false;
+};
+const addToCartHandler = (val) => {
+  addToCartProducts.value = products.value.filter(
+    (product) => product.title === val
+  );
+  open.value = true;
+};
+const cartCloseHandler = () => {
+  open.value = false;
 };
 </script>
