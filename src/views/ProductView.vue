@@ -183,9 +183,10 @@
     </div>
     <!-- cart -->
     <Cart
-      :addToCartProducts="addToCartProducts"
+      :buyCartProduct="buyCartProduct"
       :open="open"
       :cartCloseHandler="cartCloseHandler"
+      :totalBalance="totalBalance"
     />
   </div>
 </template>
@@ -196,8 +197,11 @@ import Cart from "../components/Cart.vue";
 import { onMounted, ref } from "vue";
 let products = ref([]);
 let addToCartProducts = ref([]);
+let buyCartProduct = [];
+let totalBalance = ref(0);
 let loader = ref(true);
 let search = ref("");
+let searchProduct = ref("");
 const open = ref(false);
 onMounted(async () => {
   let response = await axios.get("https://fakestoreapi.com/products");
@@ -278,11 +282,17 @@ const onElectronicHandler = async () => {
   loader.value = false;
 };
 const addToCartHandler = (val) => {
-  addToCartProducts.value = products.value.filter(
-    (product) => product.title === val
-  );
+  searchProduct.value = buyCartProduct.find((product) => product.title === val);
+  if (!searchProduct.value) {
+    addToCartProducts.value = products.value.find(
+      (product) => product.title === val
+    );
+    buyCartProduct.push(addToCartProducts.value);
+  }
   open.value = true;
+  buyCartProduct.map((p) => (totalBalance.value += +p.price));
 };
+
 const cartCloseHandler = () => {
   open.value = false;
 };

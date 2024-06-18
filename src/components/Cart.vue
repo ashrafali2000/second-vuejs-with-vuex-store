@@ -55,7 +55,7 @@
                       <div class="flow-root">
                         <ul role="list" class="-my-6 divide-y divide-gray-200">
                           <li
-                            v-for="product in addToCartProducts"
+                            v-for="product in buyCartProduct"
                             :key="product.id"
                             class="flex py-6"
                           >
@@ -111,7 +111,7 @@
                       class="flex justify-between text-base font-medium text-gray-900"
                     >
                       <p>Subtotal</p>
-                      <p>$262.00</p>
+                      <p>{{ totalBalance }}</p>
                     </div>
                     <p class="mt-0.5 text-sm text-gray-500">
                       Shipping and taxes calculated at checkout.
@@ -160,8 +160,10 @@ import {
 } from "@headlessui/vue";
 import { XMarkIcon } from "@heroicons/vue/24/outline";
 defineProps({
-  addToCartProducts: Array,
+  buyCartProduct: Array,
   open: Boolean,
   cartCloseHandler: Function,
+  totalBalance: Number,
 });
+// console.log("buyCartProduct------------>", buyCartProduct);
 </script>
