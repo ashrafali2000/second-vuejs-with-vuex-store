@@ -80,7 +80,7 @@
     <div class="flex justify-center pt-5">
       <!-- loader -->
       <div
-        v-if="loader"
+        v-if="loading"
         aria-label="Loading..."
         role="status"
         class="flex items-center space-x-2 h-screen justify-center -mt-32"
@@ -168,7 +168,7 @@
         v-else
         class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 lg:gap-10 px-3 lg:px-5"
       >
-        <div v-for="product in products">
+        <div v-for="product in data">
           <ProductCard
             :addToCartHandler="addToCartHandler"
             :category="product.category"
@@ -195,7 +195,8 @@
 import axios from "axios";
 import ProductCard from "../components/ProductCard.vue";
 import Cart from "../components/Cart.vue";
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
+import { useStore } from "vuex";
 let products = ref([]);
 let addToCartProducts = ref([]);
 let buyCartProduct = [];
@@ -204,11 +205,14 @@ let loader = ref(true);
 let search = ref("");
 let searchProduct = ref("");
 const open = ref(false);
-onMounted(async () => {
-  let response = await axios.get("https://fakestoreapi.com/products");
-  products.value = response.data;
-  loader.value = false;
+const store = useStore();
+onMounted(() => {
+  // loader.value = true;
+  store.dispatch("loadItems");
 });
+
+const data = computed(() => store.getters.items);
+const loading = computed(() => store.getters.isLoading);
 
 const searchHandler = () => {
   if (search.value === "Men" || search.value === "men") {
@@ -285,7 +289,7 @@ const onElectronicHandler = async () => {
 const addToCartHandler = (val) => {
   searchProduct.value = buyCartProduct.find((product) => product.title === val);
   if (!searchProduct.value) {
-    addToCartProducts.value = products.value.find(
+    addToCartProducts.value = data.value.find(
       (product) => product.title === val
     );
     buyCartProduct.push(addToCartProducts.value);
